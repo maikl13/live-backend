@@ -1,0 +1,36 @@
+[01-Dec-2023 18:55:30 UTC] PHP Warning:  Undefined array key "uploadfile" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 51
+[01-Dec-2023 18:55:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 51
+[01-Dec-2023 18:55:30 UTC] PHP Warning:  Undefined array key "uploadfile" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 52
+[01-Dec-2023 18:55:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 52
+[07-Dec-2023 20:20:56 UTC] PHP Warning:  include(config/dbcon.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[07-Dec-2023 20:20:56 UTC] PHP Warning:  include(): Failed opening 'config/dbcon.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[07-Dec-2023 20:20:56 UTC] PHP Warning:  include(authentication.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[07-Dec-2023 20:20:56 UTC] PHP Warning:  include(): Failed opening 'authentication.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[07-Dec-2023 20:20:56 UTC] PHP Warning:  Undefined variable $con in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 105
+[07-Dec-2023 20:20:56 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php:105
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php(105): mysqli_query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 105
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  include(config/dbcon.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  include(): Failed opening 'config/dbcon.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  include(authentication.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  include(): Failed opening 'authentication.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  Undefined array key "image" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 78
+[08-Dec-2023 03:23:27 UTC] PHP Warning:  Undefined variable $con in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 84
+[08-Dec-2023 03:23:27 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php:84
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php(84): mysqli_query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 84
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  include(config/dbcon.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  include(): Failed opening 'config/dbcon.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 3
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  include(authentication.php): Failed to open stream: No such file or directory in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  include(): Failed opening 'authentication.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 4
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  Undefined array key "image" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 78
+[08-Dec-2023 03:23:30 UTC] PHP Warning:  Undefined variable $con in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 84
+[08-Dec-2023 03:23:30 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php:84
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php(84): mysqli_query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/admin/code/codegift.php on line 84

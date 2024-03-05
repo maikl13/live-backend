@@ -1,0 +1,318 @@
+ .users-solid {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/users-solid.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+ 
+ .people-roof-solid {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/people-roof-solid.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+ .vip {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/crown-solid.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+
+ .premium {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/star-solid.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+
+ .onlineusers {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/online.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+
+ .banusers {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/ban.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+ .upgraderooms {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/upgraderooms.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+ .gifts {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/gifts.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+ 
+ .giftcate {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/giftcate.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+ .stickersicon {
+   /* Add dimensions to span */
+   display: inline-block;
+   width: 18px;
+   height: 18px;
+   /* Add background color */
+   background-color: currentColor;
+   /* Add mask image, use variable to reduce duplication */
+   --svg: url(ico/stickers.svg);
+   -webkit-mask-image: var(--svg);
+   mask-image: var(--svg);
+   -webkit-mask-repeat: no-repeat;
+   mask-repeat: no-repeat;
+   -webkit-mask-size: 100% 100%;
+   mask-size: 100% 100%;
+}
+
+.stickercate {
+   /* Add dimensions to span */
+   display: inline-block;
+   width: 18px;
+   height: 18px;
+   /* Add background color */
+   background-color: currentColor;
+   /* Add mask image, use variable to reduce duplication */
+   --svg: url(ico/stickercate.svg);
+   -webkit-mask-image: var(--svg);
+   mask-image: var(--svg);
+   -webkit-mask-repeat: no-repeat;
+   mask-repeat: no-repeat;
+   -webkit-mask-size: 100% 100%;
+   mask-size: 100% 100%;
+}
+
+
+ 
+ .history {
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/history.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+ .posticon {
+   /* Add dimensions to span */
+   display: inline-block;
+   width: 18px;
+   height: 18px;
+   /* Add background color */
+   background-color: currentColor;
+   /* Add mask image, use variable to reduce duplication */
+   --svg: url(ico/blog.svg);
+   -webkit-mask-image: var(--svg);
+   mask-image: var(--svg);
+   -webkit-mask-repeat: no-repeat;
+   mask-repeat: no-repeat;
+   -webkit-mask-size: 100% 100%;
+   mask-size: 100% 100%;
+}
+
+ 
+ .profileicon::before {
+    content: "";
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/profile.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+ .deleteicon::before {
+    content: "";
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/delete.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+ .editicon::before {
+    content: "";
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/edit.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+
+ .addicon::before {
+    content: "";
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/add.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }
+
+ .sucss-icon::before {
+    content: "";
+    /* Add dimensions to span */
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    /* Add background color */
+    background-color: currentColor;
+    /* Add mask image, use variable to reduce duplication */
+    --svg: url(ico/sucss.svg);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+ }

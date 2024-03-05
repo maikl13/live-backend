@@ -1,0 +1,39 @@
+[03-Feb-2024 23:08:15 UTC] PHP Warning:  Undefined array key "Total" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/index.php on line 202
+[03-Feb-2024 23:10:00 UTC] PHP Warning:  Undefined array key "total" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/index.php on line 202
+[03-Feb-2024 23:10:16 UTC] PHP Warning:  Undefined array key "total" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/index.php on line 202
+[04-Feb-2024 13:55:41 UTC] PHP Warning:  Undefined array key "id" in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/index.php on line 286
+[07-Feb-2024 14:00:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 77
+[07-Feb-2024 14:01:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 77
+[07-Feb-2024 14:02:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 77
+[07-Feb-2024 14:02:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 77
+[07-Feb-2024 14:03:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 77
+[07-Feb-2024 14:22:04 UTC] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:175
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php(175): mysqli->query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 175
+[07-Feb-2024 14:22:12 UTC] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:175
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php(175): mysqli->query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 175
+[07-Feb-2024 14:23:28 UTC] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php:181
+Stack trace:
+#0 /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php(181): mysqli->query()
+#1 {main}
+  thrown in /home/eda7hy73qgy6/public_html/all-go.net/LiveFlutter/agency_panel/members-income.php on line 181
