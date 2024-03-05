@@ -2,7 +2,6 @@
 include "config.php";
 include "notifications_manager.php";
 
- 
 $post_id = $_GET['post_id'];
 $text = $_GET['text'];
 $reply_to = $_GET['reply_to'];
