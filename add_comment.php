@@ -7,7 +7,6 @@ $text = $_GET['text'];
 $reply_to = $_GET['reply_to'];
 $publisher_uid = $_GET['publisher_uid'];
 $parent_comment_id = $_GET['parent_comment_id'];
-
 /*
  $result = updateSql("INSERT INTO `comments` 
  (`id`, `text`, `post_id`, `publisher_uid`, `datetime`, `reply_to`, `parent_comment_id`) VALUES 
