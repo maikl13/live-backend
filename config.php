@@ -4,6 +4,7 @@
 date_default_timezone_set('UTC'); 
 //// init main prams /////
 
+ini_set('display_errors', 1);
 
 $mysql_database= "yalla_chat";
 $mysql_user= "tictic";

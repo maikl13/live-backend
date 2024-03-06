@@ -1,13 +1,14 @@
 
 <?php
 
-$host = "92.205.144.215";
-$username = "yalla_chat";
-$password = "NUeSyRHLj?dD";
+
+$username = "tictic";
+$password = "tic@4321";
 $database = "yalla_chat";
 
 //Connection
-$con = mysqli_connect("$host","$username","$password","$database");
+$con = mysqli_connect("localhost","$username","$password","$database");
+
 
 // Check Connection
 if(!$con)
