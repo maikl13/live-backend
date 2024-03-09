@@ -23,16 +23,16 @@ include('config/dbcon.php');
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="code.php" method="POST"  enctype="multipart/form-data">
+            <form action="code-add-agency.php" method="POST"  enctype="multipart/form-data">
             <div class="modal-body">
-                <input type="hidden" name="delete_id" class="delete_user_id">
+                <input type="hidden" name="delete_id" class="delete_agency_id">
                 <p>
                     Are your sure. you want delete this Data?
                 </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="DeleteAdminbtn" class="btn btn-danger">Yes, Delete !</button>
+              <button type="submit" name="DeleteAgencybtn" class="btn btn-danger">Yes, Delete !</button>
       </div>
     </form>
 
@@ -109,8 +109,8 @@ include('config/dbcon.php');
                     <td><?php echo $row['full_name']; ?>(ID:<?php echo $row['short_digital_id']; ?>)</td>
                     <td><?php echo $row['balance']; ?></td>
                     <td>
-                    <a href="agency-edit.php?agency_id=<?php echo $row['id']; ?>" class="btn btn-info"><i class="editicon"></i>  Edit</a>
-                    <button type="button" value="<?php echo $row['id']; ?>" class="btn btn-danger deletebtn"><i class="deleteicon"></i>  Delete</a>
+                    <a href="agency-edit.php?agency_id=<?php echo $row['agencyid']; ?>" class="btn btn-info"><i class="editicon"></i>  Edit</a>
+                    <button type="button" value="<?php echo $row['agencyid']; ?>" class="btn btn-danger deletebtn"><i class="deleteicon"></i>  Delete</a>
                     </td>
                   </tr>
 
@@ -149,9 +149,9 @@ include('config/dbcon.php');
         $('.deletebtn').click(function (e) {
             e.preventDefault();
 
-            var user_id = $(this).val();
+            var agency_id = $(this).val();
             //console.log(user_id);
-            $('.delete_user_id').val(user_id);
+            $('.delete_agency_id').val(agency_id);
             $('#DeletModal').modal('show');
              
         });

@@ -362,6 +362,68 @@
             </li>
             </ul>
             </a>
+            <li class="nav-header">Agency & Agents Coins</li>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-star nav-icon"></i>
+              <p>
+              Agency
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agency.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agency List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="premium-privileges.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Premium Privileges</p>
+                  </a>
+            </li>
+            </a>
+              </li>
+              <li class="nav-item">
+                <a href="themes-custom.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Premium History</p>
+                  </a>
+            </li>
+            </a>
+              </li>
+              <li class="nav-item">
+                <a href="themes-history.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>History Themes</p>
+                  </a>
+            </li>
+            </ul>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-crown nav-icon"></i>
+              <p>
+                Agent Coins
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="hats.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agent List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="hats-history.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hats History</p>
+                  </a>
+            </li>
+            </ul>
+            </a>
             <li class="nav-header">Accessories Users & Rooms</li>
             <li class="nav-item">
             <a href="#" class="nav-link">
