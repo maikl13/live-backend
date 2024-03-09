@@ -21,7 +21,7 @@ function sendNotifications($fullname,$fcmNotificatio){
   
    
     $fcmNotificatio=[
-      "to"=>"$latest_bidder_fcm_token",
+      "to"=>"$fcmNotificatio",
       "notification"=>$notification,
       "data"=>$extraNotificationData,
      ];

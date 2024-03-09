@@ -8,9 +8,8 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
     $userId = $_SERVER['HTTP_' . $customHeaderName];
 
     // Assuming you have a MySQL database connection
-    $dbHost = '92.205.144.215';
-    $dbUser = 'yalla_chat';
-    $dbPass = 'NUeSyRHLj?dD';
+    $dbUser = 'tictic';
+    $dbPass = 'tic@4321';
     $dbName = 'yalla_chat';
 
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);

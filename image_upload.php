@@ -1,11 +1,11 @@
 <?php
 $return["error"] = false;
 $return["msg"] = "";
-
+//return $_POST;
 if(isset($_POST["image"])){
     $base64_string = $_POST["image"];
     $imageName = $_POST["imageName"];
-    $outputfile = "images/$imageName";
+    $outputfile = __DIR__."/images/$imageName";
 
     // Decode the base64 image data
     $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64_string));

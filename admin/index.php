@@ -167,16 +167,15 @@ include('includes/sidebar.php');
                     $query = "SELECT  SUM(coins_packages.value_in_real_money)  AS coins FROM `recharge` JOIN `users` ON users.id = recharge.user_id JOIN `coins_packages` ON recharge.coins_package_id = coins_packages.id WHERE recharge.recharge_datetime ORDER BY coins";
                     $query_run = mysqli_query($con, $query);
 
-                    if(mysqli_num_rows($query_run) > 0)
-                    {
-                        foreach($query_run as $row)
-                        {
-                        }
-                      }
-                          ?>
-            <?php echo'<h1> ' .$row['coins'].'<h1>';?>
-                <p>Total Recharge ( Dollars )</p>
-              </div>
+                    if(mysqli_num_rows($query_run) > 0) {
+                      foreach($query_run as $row) {
+                        $formatted_coins = number_format($row['coins'], 2); // تقصير النتيجة لتكون بـ 2 أرقام بعد الفاصلة
+                        echo '<h1>' . $formatted_coins . '</h1>';
+                        echo '<p>Total Recharge ( Dollars )</p>';
+                                      }
+                  }
+                  ?>
+                                </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>

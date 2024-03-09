@@ -6,10 +6,16 @@ include "config.php";
  
  
  $current_round=getCurrentRound();
-if($current_round==NULL){
+ 
+if($current_round['id']==NULL){
+ 
 	$randomNumber = rand(1, 8);
- updateSql("INSERT INTO `wheel_rounds` (`id`, `winner_item`, `starts_at`, `ends_at`, `done`)
-  VALUES (NULL, $randomNumber, CURDATE() + INTERVAL 5 SECOND, CURDATE() + INTERVAL 35 SECOND, '0');");  
+    $insertCode="INSERT INTO `wheel_rounds` (`id`, `winner_item`, 
+    `starts_at`, `ends_at`, `done`)
+     VALUES (NULL, $randomNumber, NOW() + INTERVAL 5 
+     SECOND, NOW() + INTERVAL 35 SECOND, 0);";
+ 
+    $result = updateSql($insertCode);  
  
  $current_round=getCurrentRound();
 }

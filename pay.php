@@ -41,11 +41,10 @@ return $result2;
 {
       
 $discountRatio=0;
-   $meAsPremium=readRowFromSql("SELECT `users`.`current_premium_subscription` 
-   FROM `users` WHERE `users`.`uid`='$uid'", true) ;
-   if($meAsPremium!=null){
-     $myPremeiumSubscription=$meAsPremium['current_premium_subscription'];
-    
+   $myPremeiumSubscription=readRowFromSql("SELECT `users`.`current_premium_subscription` 
+   FROM `users` WHERE `users`.`uid`='$uid'", true) ['current_premium_subscription'];
+   if($myPremeiumSubscription!=null){
+     
        $discountRatio = readRowFromSql("SELECT `premium_subscription`.`store_discount`  
  FROM `premium_subscription` WHERE `premium_subscription`.`id` = '$myPremeiumSubscription'
 ", true)['store_discount'];
