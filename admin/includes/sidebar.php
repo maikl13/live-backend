@@ -63,6 +63,28 @@
           </li>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-bug-slash nav-icon"></i>
+              <p>
+                Banners
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="home-banners.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Homepage Banners</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="moments-banners.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Moments Banners</p>
+                  </a>
+            </li>
+            </ul>
+          <li class="nav-item">
             <a href="users.php" class="nav-link">
               <i class="users-solid nav-icon"></i>
               <span class="right badge rounded-pill bg-success">
@@ -557,7 +579,7 @@
                   </a>
             </li>
             </ul>
-            <li class="nav-header">Reports & Feadback</li>
+            <li class="nav-header">Reports & Feedback</li>
             <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-bug nav-icon"></i>
@@ -570,7 +592,7 @@
               <li class="nav-item">
                 <a href="feadback.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Feabback</p>
+                  <p>Feedback</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -616,7 +638,6 @@
               Country List
               </p>
             </a>
-          </li>
           </li>
           <li class="nav-item">
             <a href="admins.php" class="nav-link">
