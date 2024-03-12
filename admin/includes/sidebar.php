@@ -325,17 +325,17 @@
             </a>
               </li>
               <li class="nav-item">
-                <a href="themes-custom.php" class="nav-link">
+                <a href="premium-logs.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Premium History</p>
+                  <p>Premium Logs</p>
                   </a>
             </li>
             </a>
               </li>
               <li class="nav-item">
-                <a href="themes-history.php" class="nav-link">
+                <a href="premium-themes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>History Themes</p>
+                  <p>Premium Themes</p>
                   </a>
             </li>
             </ul>
@@ -349,15 +349,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="hats.php" class="nav-link">
+                <a href="vip-subscriptions.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Hats</p>
+                  <p>VIP Subscriptions</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="hats-history.php" class="nav-link">
+                <a href="vip-benefits.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Hats History</p>
+                  <p>VIP Benefits</p>
+                  </a>
+            </li>
+            </a>
+              </li>
+              <li class="nav-item">
+                <a href="vip-logs.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>VIP Logs</p>
+                  </a>
+            </li>
+            </a>
+              </li>
+              <li class="nav-item">
+                <a href="vip-points-users.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>VIP Points Users</p>
                   </a>
             </li>
             </ul>
@@ -377,29 +393,6 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agency List</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="premium-privileges.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Premium Privileges</p>
-                  </a>
-            </li>
-            </a>
-              </li>
-              <li class="nav-item">
-                <a href="themes-custom.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Premium History</p>
-                  </a>
-            </li>
-            </a>
-              </li>
-              <li class="nav-item">
-                <a href="themes-history.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>History Themes</p>
-                  </a>
-            </li>
             </ul>
             <li class="nav-item">
             <a href="#" class="nav-link">
@@ -411,7 +404,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="hats.php" class="nav-link">
+                <a href="agent-coins.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agent List</p>
                 </a>
@@ -533,27 +526,34 @@
             <a href="#" class="nav-link">
               <i class="fa-solid fa-address-card nav-icon"></i>
               <p>
-                Special ID
+              Special ID
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="vehicles.php" class="nav-link">
+                <a href="special_ids_sections.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Special ID Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vehicles-history.php" class="nav-link">
+                <a href="special_ids_sub_sections.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Special ID Sub Category</p>
                   </a>
             </li>
             <li class="nav-item">
-                <a href="vehicles-history.php" class="nav-link">
+                <a href="users_unique_ids.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Users Unique</p>
+                  <p>Users Special ID</p>
+                  </a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a href="rooms_unique_ids.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Rooms Special ID</p>
                   </a>
             </li>
             </ul>

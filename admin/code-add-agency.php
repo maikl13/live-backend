@@ -47,10 +47,11 @@ if(isset($_POST['updateAgency']))
     $agency_id = $_POST['agency_id'];
     $name = $_POST['name'];
     $bio = $_POST['bio'];
+    $owner_uid = $_POST['owner_uid'];
     $old_filename = $_POST['old_image'];
     $image = $_FILES['image']['name'];
-    $old_filenameicon = $_POST['old_icon'];
-    $icon = $_FILES['icon']['name'];
+    $old_filenameflag = $_POST['old_flag'];
+    $flag = $_FILES['flag']['name'];
 
     $update_filename = "";
     if($image != NULL)
@@ -65,22 +66,22 @@ if(isset($_POST['updateAgency']))
     {
         $update_filename = $old_filename;
     }
-    $update_filenameicon = "";
-    if($icon != NULL)
+    $update_filenameflag = "";
+    if($flag != NULL)
     {
             //Rename this image
-    $icon_extension = pathinfo($icon, PATHINFO_EXTENSION);
-    $filenameicon = time().'.'.$icon_extension;
+    $flag_extension = pathinfo($flag, PATHINFO_EXTENSION);
+    $filenameflag = time().'.'.$flag_extension;
 
-    $update_filenameicon = $filenameicon;
+    $update_filenameflag = $filenameflag;
     }
     else
     {
-        $update_filenameicon = $old_filenameicon;
+        $update_filenameflag = $old_filenameflag;
     }
 
 
-    $query = "UPDATE agency SET  name='$name', value='$value', section='$section', currency_type='$currency_type',level='$level', image='$update_filename', icon='$update_filenameicon' WHERE id='$gift_id' ";
+    $query = "UPDATE agency SET  name='$name', bio='$bio', owner_uid='$owner_uid', image='$update_filename', flag='$update_filenameflag' WHERE id='$agency_id' ";
     $query_run = mysqli_query($con, $query);
 
 
@@ -94,23 +95,23 @@ if(isset($_POST['updateAgency']))
 
             move_uploaded_file($_FILES['image']['tmp_name'], '../images/'.$update_filename);
      }
-     if($icon != NULL){
-        if(file_exists('../images/'.$old_filenameicon)){
-            unlink("../images/'.$old_filenameicon");
+     if($flag != NULL){
+        if(file_exists('../images/'.$old_filenameflag)){
+            unlink("../images/'.$old_filenameflag");
 
         }
 
-        move_uploaded_file($_FILES['icon']['tmp_name'], '../images/'.$update_filenameicon);
+        move_uploaded_file($_FILES['flag']['tmp_name'], '../images/'.$update_filenameflag);
     }
      $_SESSION['status'] = 'Success';
      $_SESSION['status_code'] = 'success';
-     header("Location: gifts.php");
+     header("Location: agency.php");
     }
     else
     {
         $_SESSION['status'] = 'ERROR';
         $_SESSION['status_code'] = 'error';
-          header("Location: gifts.php");
+          header("Location: agency.php");
 
     }
 

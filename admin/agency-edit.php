@@ -70,21 +70,25 @@ include('config/dbcon.php');
                     <input type="text" name="bio" value="<?php echo $row['bio'] ?>" class="form-control" placeholder="Agency BIO">
               </div>
               <div class="form-group">
+                <label for="">Agency Founder UID</label>
+                    <input type="text" name="owner_uid" value="<?php echo $row['owner_uid'] ?>" class="form-control" placeholder="Agency Founder UID">
+              </div>
+              <div class="form-group">
                 <label for="">Agency Image</label>
                 <input type="hidden" name="old_image" value="<?php echo $row['image'] ?>">
                     <input type="file" name="image" class="form-control" placeholder="image"> 
 
               </div>
               <img src="../images/<?php echo $row['image']; ?>" width="100px" height="100px"  alt="Image">
-
+              </div>
+              <div class="col-md-8">   
               <div class="form-group">
                 <label for="">Agency Flag</label>
-                <input type="hidden" name="old_image" value="<?php echo $row['flag'] ?>">
-                    <input type="file" name="image" class="form-control" placeholder="image"> 
+                <input type="hidden" name="old_flag" value="<?php echo $row['flag'] ?>">
+                    <input type="file" name="flag" class="form-control" placeholder="image"> 
 
               </div>
               <img src="../images/<?php echo $row['flag']; ?>" width="100px" height="100px"  alt="Image">
-
 
                             <?php
                         }
@@ -97,7 +101,7 @@ include('config/dbcon.php');
                 ?>
             </div>
             <div class="modal-footer">
-              <button type="submit" name="updateAdmin" class="btn btn-info">Update <i class="sucss-icon"></i></button>
+              <button type="submit" name="updateAgency" class="btn btn-info">Update <i class="sucss-icon"></i></button>
       </div>
     </form>
 
