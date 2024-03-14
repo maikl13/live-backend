@@ -439,6 +439,73 @@
             </li>
             </ul>
             </a>
+            <li class="nav-header">Finance & Withdraw</li>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-star nav-icon"></i>
+              <p>
+              Withdraw Users
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-users-allrequest.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Request</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agency.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Completed</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agency.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pending</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agency.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Processing</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agency.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Failed</p>
+                </a>
+            </ul>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-crown nav-icon"></i>
+              <p>
+              Withdraw Agency
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="agent-coins.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agent List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="hats-history.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hats History</p>
+                  </a>
+            </li>
+            </ul>
+            </a>
             <li class="nav-header">Accessories Users & Rooms</li>
             <li class="nav-item">
             <a href="#" class="nav-link">

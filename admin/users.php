@@ -1,12 +1,14 @@
 <?php
 session_start();
-$page_title = "Voice Chat | Users";
 include('includes/header.php');
 include('authentication.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include('config/dbcon.php');
+
+
 ?>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -22,7 +24,7 @@ include('config/dbcon.php');
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="code/codeusers.php" method="POST">
+            <form action="codeusers.php" method="POST">
             <div class="modal-body">
                 <input type="hidden" name="delete_id" class="delete_user_id">
                 <p>
@@ -112,9 +114,18 @@ include('config/dbcon.php');
                     <td><?php echo $row['crystals']; ?></td>
                     <td><?php echo $row['login_method']; ?></td>
                     <td><?php echo $row['join_date']; ?></td>
-                    <td><?php if($row['account_status']=="banned")  echo "Banned"; else  echo "Active"; ?></td>
                     <td>
-                    <a href="user-profile.php?user_id=<?php echo $row['id']; ?>" class="btn btn-info"><i class="profileicon"></i> Profile</a>
+                    <?php 
+                                $account_status = $row['account_status'];
+                                $user_id = $row['id'];
+                                if($account_status == '') 
+                                { echo "<a  href=users_account_ban.php?id=".$user_id."><button type='button' class='btn btn-outline-danger'>Ban</button></a>"; } 
+                                else if($account_status == 'banned'){
+                                  echo "<a href=users_account_unban.php?id=".$user_id."><button type='button' class='btn btn-outline-primary'>Unban</button></a>";
+                                }?> 
+                    </td>
+                    <td>
+                    <a href="user-profile.php?user_id=<?php echo $row['id']; ?>" class="btn btn-info"><i class="profileicon"></i> View</a>
                     <button type="button" value="<?php echo $row['id']; ?>" class="btn btn-danger deletebtn"><i class="fa-regular deleteicon"></i> Delete</a>
                     </td>
                   </tr>

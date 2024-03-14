@@ -77,7 +77,7 @@ include('config/dbcon.php');
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
+                  <img class="profile-user-img"
                        src="../images//<?php echo $row['image']; ?>" width="120" height="120" alt="User profile picture">
                 </div>
 

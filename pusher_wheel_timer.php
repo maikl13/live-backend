@@ -12,8 +12,15 @@ $pusher = new Pusher\Pusher($app_key, $app_secret, $app_id,
 function checkWheelTimer(){    
     global $pusher;
      $game_remaining_sec=getTimer(); 
-    if($game_remaining_sec==0){
+    
+ 
+ //update game remaining_sec timer
+  $game_remaining_to_be_back= calculateGameRemainingToBeBack($game_remaining_sec);
+  updateSql("INSERT INTO `log` (`id`, `text`, `created_at`) VALUES (NULL, '$game_remaining_to_be_back', NOW());"); 
+   $pusher->trigger('wheel', 'update_timer',  $game_remaining_to_be_back);
+ 
 
+if($game_remaining_sec==0){
         //set done
         $result = updateSql("UPDATE `wheel_rounds` SET `done` = '1'");   
         //start new round
@@ -25,25 +32,17 @@ function checkWheelTimer(){
      $pusher->trigger('wheel', 'game_started', $round);
     
     }
- 
- //update game remaining_sec timer
- 
-  $game_remaining_to_be_back= calculateGameRemainingToBeBack($game_remaining_sec);
-  updateSql("INSERT INTO `log` (`id`, `text`, `created_at`) VALUES (NULL, '$game_remaining_to_be_back', NOW());"); 
-   
-   $pusher->trigger('wheel', 'update_timer',  $game_remaining_to_be_back);
- 
-
 
 if($game_remaining_sec==12){
      
     //get winner
     $round=getRoundData(); 
-    $winner=  getWinner($round);
+    //todo case no winner defalut
+    $winner=  getWinner($round)['id'];
  $insert_winner = updateSql("UPDATE `wheel_rounds` SET `winner_item` = '$winner'
   WHERE `wheel_rounds`.`id` = $round;");       
  
- $pusher->trigger('wheel', 'game_ended',$winner);
+ //$pusher->trigger('wheel', 'game_ended',$winner);
 } 
 
  
@@ -69,7 +68,7 @@ function getRoundData(){
 return $current_round['id'];
 }
 function getWinner($round){
-    $wheel_game_items = readRowFromSql("SELECT 
+  $winner = readRowFromSql("SELECT 
     `wheel_game_items`.`id`,
     `wheel_game_items`.`value`,
     COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0) AS pot,
@@ -82,15 +81,59 @@ function getWinner($round){
     GROUP BY
     `wheel_game_items`.`id`,
     `wheel_game_items`.`value`
-    ORDER BY (`wheel_game_items`.`value`*COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0) ) DESC
+    ORDER BY (`wheel_game_items`.`value`*COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0) ) 
     LIMIT 1;");   
-    if($wheel_game_items==null){
-        $winner=1;
-    }else{
-        $winner['id'];
-    }
+  
    return $winner;
    }
+ function getGameResult($round){
+    $winnerItem = getWinner($round);
+    $winnerItemId= $winnerItem['id'];
+    $winnerItemValue= $winnerItem['value'];
+    $topThree = readRowFromSql("SELECT 
+    COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0)*$winnerItemValue AS won_value,
+     `users`.`full_name`,
+      `users`.`profile_pic`
+    FROM 
+    `wheel_rounds_bidders` 
+    INNER JOIN `users` on `users`.`uid`=`wheel_rounds_bidders`.`bidder`
+    WHERE 
+      `wheel_rounds_bidders`.`round` = '$round' AND  `wheel_rounds_bidders`.`item`='$round'
+    GROUP BY
+    `users`.`id`
+    ORDER BY  COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0)  DESC
+    LIMIT 3;",false);   
+    $allBidders = readRowFromSql("SELECT `wheel_rounds_bidders`.`bidder` ,
+    `users`.`last_wheel_pusher_id`
+          FROM `wheel_rounds_bidders` 
+          INNER JOIN `users` ON  `users`.`uid`= `wheel_rounds_bidders`.`bidder` 
+          WHERE `wheel_rounds_bidders`.`round`='$round'
+       ",false);     
+    foreach($allBidders as $bidder){
+        $bidderUID=$bidder['bidder'];
+        $bidderPusherId=$bidder['last_wheel_pusher_id'];
+
+        $bidderGameData = readRowFromSql("
+        SELECT 
+    COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0) AS potValue,
+        COALESCE(SUM(wheel_rounds_bidders_on_the_winning_item.`value`), 0) * '$winnerItemValue' AS wonValue
+    FROM 
+    `wheel_rounds_bidders` 
+    LEFT OUTER JOIN `wheel_rounds_bidders` wheel_rounds_bidders_on_the_winning_item ON 
+    wheel_rounds_bidders_on_the_winning_item.bidder=`wheel_rounds_bidders`.`bidder` AND wheel_rounds_bidders_on_the_winning_item.round=`wheel_rounds_bidders`.`round` AND
+    wheel_rounds_bidders_on_the_winning_item.item='$winnerItemId'
+    WHERE 
+      `wheel_rounds_bidders`.`round` = '$round' AND  `wheel_rounds_bidders`.`bidder`='$bidderUID'
+    LIMIT 1;
+        ",false);     
+     $result[]=$bidderGameData;
+     $result['winnerItem']=$winnerItemId;
+     $result['biggest_winner_this_round']=$topThree ;
+     pusher.sendToUser("$bidderPusherId", "game_ended",$result);
+    }
+ 
+}
+
 function getTimer(){
     //rest or game
     $remaining_seconds=readRowFromSql("SELECT 

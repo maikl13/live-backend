@@ -185,11 +185,11 @@ include('includes/sidebar.php');
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
               <div class="inner">
               <?php
                   require 'config/dbcon.php';
-                  $query = "SELECT id FROM posts ORDER BY id";
+                  $query = "SELECT id FROM agency ORDER BY id";
                   $query_run = mysqli_query($con, $query);
 
                   $row = mysqli_num_rows($query_run);
@@ -197,10 +197,10 @@ include('includes/sidebar.php');
                   echo '<h1> '.$row.' </h1>';
 
                   ?>
-                <p>Total Posts</p>
+                <p>Total Agency</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-person-add"></i>
               </div>
               <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -208,11 +208,11 @@ include('includes/sidebar.php');
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-info">
               <div class="inner">
               <?php
                   require 'config/dbcon.php';
-                  $query = "SELECT id FROM posts ORDER BY id";
+                  $query = "SELECT id FROM agent_coins ORDER BY id";
                   $query_run = mysqli_query($con, $query);
 
                   $row = mysqli_num_rows($query_run);
@@ -220,78 +220,15 @@ include('includes/sidebar.php');
                   echo '<h1> '.$row.' </h1>';
 
                   ?>
-                <p>Total Posts</p>
+                <p>Total Agent Coins</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-person-add"></i>
               </div>
               <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
-          <!-- ./col -->
-          <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Last 5 Members</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                  </a>
-                </div>
-              </div>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-striped table-valign-middle">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Image</th>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Login By</th>
-                    <th>Join Date</th>
-                    <th>Date of birth</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $query = "SELECT * FROM users ORDER BY id DESC LIMIT 5";
-                    $query_run = mysqli_query($con, $query);
-
-                    if(mysqli_num_rows($query_run) > 0)
-                    {
-                        foreach($query_run as $row)
-                        {
-                          ?>
-                  <tr>
-                  <td><?php echo $row['id']; ?></td>
-                    <td><img src="../images/<?php echo $row['profile_pic']; ?>" width="70" height="70" class="img-circle img-size-32 mr-3" /></td>
-                    <td><?php echo $row['full_name']; ?></td>
-                    <td><?php echo $row['gender']; ?></td>
-                    <td><?php echo $row['login_method']; ?></td>
-                    <td><?php echo $row['join_date']; ?></td>
-                    <td><?php echo $row['date_of_birth']; ?></td>
-                    <td>
-                    </td>
-                  </tr>
-
-                          <?php
-                        }
-                    }
-                    else
-                    {
-                        ?>
-                        <tr>
-                            <td>No Record Found</td>
-                        </tr>
-                        <?php
-                    }
-                  ?>
-                  </tbody>
-                </table> 
-              </div>
-            </div>
-            <!-- /.card -->
 
                       
 
