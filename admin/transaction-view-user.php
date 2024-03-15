@@ -362,17 +362,41 @@ include('config/dbcon.php');
               <!-- /.row -->
 
               <!-- this row will not appear when printing -->
-              <form action="transaction-code-user-withdraw.php" method="POST">
+              <form action="transaction-code-user-withdraw.php" method="post">
+              <?php
+                if(isset($_GET['transaction_id']))
+                {
+                  $transaction_id = $_GET['transaction_id'];
+                  $query = "SELECT a.id as idrequest, b.id, a.uid, a.firstname,  b.profile_pic, b.level, a.lastname, b.full_name, b.short_digital_id, b.bio, b.uid, a.payment_method, a.bank_address, a.iban, a.swiftcode, a.western_union_details, a.country, a.phone, a.amount, a.dollarsamount, a.status, a.submission_time FROM withdraw_request AS a INNER JOIN users AS b ON a.uid = b.uid WHERE a.id='$transaction_id' LIMIT 1 ";   
+                    $query_run = mysqli_query($con, $query);
+
+                    if(mysqli_num_rows($query_run) > 0)
+                    {
+                        foreach($query_run as $row)
+                        {
+                             ?>
               <div class="row no-print">
                 <div class="col-12">
+                <input type="hidden" name="transaction_id" value="<?php echo $row['idrequest'] ?>">
                   <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Approval</button>
-                  <button type="button" class="btn btn-info float-right" style="margin-right: 5px;"><i class="fas fa-download"></i> Processing</button>
-                  <button type="button" class="btn btn-warning float-right" style="margin-right: 5px;"><i class="fas fa-download"></i> Pending</button>
+                  <button type="submit" name="updatetocompleted" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Approval</button>
+                  <button type="submit" name="updatetoprocessing" class="btn btn-info float-right" style="margin-right: 5px;"><i class="fas fa-download"></i> Processing</button>
+                  <button type="submit" name="updatetopending" class="btn btn-warning float-right" style="margin-right: 5px;"><i class="fas fa-download"></i> Pending</button>
                   <button type="submit" name="updatetofailed" class="btn btn-danger float-right" style="margin-right: 5px;"> Reject</button>
                 </div>
                 </form>
               </div>
+              <?php
+                        }
+                    }
+                    else
+                    {
+                        echo "<h4>  </h4>";
+                    }
+                }  
+            
+                ?>
+
             </div>
 
             <!-- /.invoice -->
@@ -392,6 +416,8 @@ include('config/dbcon.php');
 <script>
  // window.addEventListener("load", window.print());
 </script>
+
+
 
 <?php include('includes/script.php'); ?>
 <?php include('includes/footer.php'); ?>

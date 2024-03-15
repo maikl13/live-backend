@@ -457,30 +457,37 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agency.php" class="nav-link">
+                <a href="withdraw-users-completed.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Completed</p>
                 </a>
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agency.php" class="nav-link">
+                <a href="withdraw-users-pending.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending</p>
                 </a>
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agency.php" class="nav-link">
+                <a href="withdraw-users-processing.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Processing</p>
                 </a>
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agency.php" class="nav-link">
+                <a href="withdraw-users-failed.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Failed</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-users-logs.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Withdraw Logs</p>
                 </a>
             </ul>
             <li class="nav-item">

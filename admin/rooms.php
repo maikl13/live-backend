@@ -69,10 +69,7 @@ include('config/dbcon.php');
                     <td><?php echo $row['enter_lock']; ?></td>
                     <td><?php echo $row['create_datetime']; ?></td>
                     <td>
-                    <a href="rooms-profile.php?room_id=<?php echo $row['id']; ?>" class="btn btn-info">Setting</a>
-                    <a href="room-members.php?room_id=<?php echo $row['id']; ?>" class="btn btn-info">Members</a>
-                    <a href="room-chats.php?room_id=<?php echo $row['id']; ?>" class="btn btn-info">Chat History</a>
-                    <a href="room-banlist.php?room_id=<?php echo $row['id']; ?>" class="btn btn-danger">Ban List</a>
+                    <a href="rooms-profile.php?room_id=<?php echo $row['id']; ?>" class="btn btn-info"><i class="profileicon"></i>Settings</a>
                     <a href="" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>

@@ -28,6 +28,17 @@ if($user_in_agency!=NULL){
      $list[]=$botton;
 }
 
+$user_earnings= readRowFromSql("SELECT `users`.`agency_id`  FROM `users` WHERE `users`.`uid` = '$user'", true)['agency_id'];
+ 
+if($user_earnings!=NULL){    
+     $botton['title_arabic']='أرباحي';
+     $botton['title_english']='My Earnings';
+     $botton['botton_icon']='insurance.png';
+     $botton['link_to_open_on_click']='https://all-go.net/LiveFlutter/earnings/index.php';
+     $list[]=$botton;
+}
+
+
 $user_owns_agency= readRowFromSql("SELECT `agency`.`id` FROM `agency` WHERE `agency`.`owner_uid`= '$user'", true);
 if($user_owns_agency!=null){
      $botton['title_arabic']='ادارة وكالتي';
