@@ -1,4 +1,7 @@
 <?php
+
+include('config/dbcon.php');
+
 // Replace 'Your-Header-Name' with the actual name of your custom header
 $customHeaderName = 'UID';
 
@@ -6,18 +9,6 @@ $customHeaderName = 'UID';
 if (isset($_SERVER['HTTP_' . $customHeaderName])) {
     // Retrieve the value of the custom header
     $userId = $_SERVER['HTTP_' . $customHeaderName];
-
-    // Assuming you have a MySQL database connection
-    $dbUser = 'tictic';
-    $dbPass = 'tic@4321';
-    $dbName = 'yalla_chat';
-
-    $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
-
-    // Check the database connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     // Query to retrieve user data based on the user ID
     // Sanitize the user ID to prevent SQL injection
@@ -32,13 +23,13 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
         // Fetch user data
         $userData = $result->fetch_assoc();
 
-        // Check if the user field contains "system"
-        if (strpos($userData['agency_id'], 'system') !== false) {
-            // Redirect to a page if the user field contains "system" (replace 'system_page.php' with the actual page)
+        // Check if the agency_id field is NULL
+        if ($userData['agency_id'] === NULL) {
+            // Redirect to a page if the agency_id field is NULL (replace 'null_page.php' with the actual page)
             header("Location: search.php");
             exit();
         } else {
-            // Redirect to another page if the user field does not contain "system" (replace 'other_page.php' with the actual page)
+            // Redirect to another page if the agency_id field is not NULL (replace 'other_page.php' with the actual page)
             header("Location: host-center.php");
             exit();
         }

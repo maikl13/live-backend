@@ -148,26 +148,9 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
     <div class="custom-container">
       <ul class="categories-list">
         <li>
-          <a href="crypto-send.html">
-            <div class="categories-box">
-              <i class="categories-icon" data-feather="arrow-up"></i>
-            </div>
-            <h5 class="mt-2 text-center">Send</h5>
-          </a>
-        </li>
-        <li>
-          <a href="crypto-exchange.html">
-            <div class="categories-box">
-              <i class="categories-icon" data-feather="repeat"></i>
-            </div>
-            <h5 class="mt-2 text-center">Exchange</h5>
-          </a>
-        </li>
-
-        <li>
           <a href="withdraw.php">
             <div class="categories-box">
-              <i class="iconsax categories-icon" data-icon="bank"></i>
+              <i class="categories-icon" data-feather="arrow-up"></i>
             </div>
             <h5 class="mt-2 text-center">Withdraw</h5>
           </a>
@@ -199,7 +182,7 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
     $userId = $conn->real_escape_string($userId);
 
         // استعلام لاسترداد بيانات المستخدم بناءً على رقم المستخدم
-        $sql = "SELECT * FROM withdraw_request WHERE uid = '$userId' ORDER BY submission_time DESC LIMIT 3";
+        $sql = "SELECT * FROM withdraw_request WHERE uid = '$userId' ORDER BY submission_time DESC LIMIT 10";
         $result = $conn->query($sql);
 
         // التحقق مما إذا كان الاستعلام ناجحًا
@@ -209,13 +192,13 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
                 // عرض الفاتورة بناءً على بيانات المستخدم المسترجعة
 ?>
           <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
+            <a href="" class="d-flex gap-3">
               <div class="transaction-image color3">
                 <img class="img-fluid icon" src="trans.png" alt="litecoin" />
               </div>
               <div class="transaction-details">
                 <div class="transaction-name">
-                  <h5>#INV-<?php echo $row['id']; ?></h5>
+                  <h5>#INV-<?php echo $row['id']; ?> (<?php echo $row['status']; ?>)</h5>
                   <h3 class="success-color"><?php echo $row['dollarsamount']; ?>$</h3>
                 </div>
                 <div class="d-flex justify-content-between">

@@ -44,18 +44,49 @@
 
 <body>
 
+<style>
+    .header-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .header-panel h5 {
+      font-weight: bold;
+      color: purple;
+    }
+  </style>
+
+
+<header class="section-t-space">
+  <div class="custom-container">
+    <div class="header-panel">
+    <a href="notifications-agency.php" class="back-btn">
+          <i class="icon" data-feather="bell"></i>
+
+      <h2 style="font-weight: bold; color: purple; text-align: center;">Agency Panel</h2>
+
+      <a href="notifications-agency.php" class="notification">
+        <i class="notification-icon" data-feather="bell"></i>
+      </a>
+    </div>
+  </div>
+</header>
+  
   <!-- card start -->
   <section class="section-b-space">
     <div class="custom-container">
       <div class="card-box">
         <div class="card-details">
           <div class="d-flex justify-content-between">
-            <h5 class="fw-semibold">Total Golds</h5>
+            <h5 class="fw-semibold">Total Golds ( Month )</h5>
             <img src="assets/images/svg/ellipse.svg" alt="ellipse" />
           </div>
 
           <h1 class="mt-2 text-white">
           <?php
+
+          
 require 'config/dbcon.php';
 $customHeaderName = 'UID';
 
@@ -690,18 +721,17 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
     <div class="custom-container">
       <div class="title">
         <h2>Select Options</h2>
-        <a href="service.html">See all</a>
+        <a href="#">See all</a>
       </div>
       <div class="row gy-3">
         <div class="col-3">
-          <a href="service.html">
+        <a href="all-members.php">
             <div class="service-box">
-              <i class="service-icon" data-feather="activity"></i>
+              <i class="service-icon" data-feather="droplet"></i>
             </div>
-            <h5 class="mt-2 text-center dark-text">Ranks</h5>
+            <h5 class="mt-2 text-center dark-text">All Members</h5>
           </a>
         </div>
-
         <div class="col-3">
           <a href="members-income.php">
             <div class="service-box">
@@ -711,24 +741,15 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
           </a>
         </div>
         <div class="col-3">
-          <a href="service.html">
+          <a href="request-members.php">
             <div class="service-box">
               <i class="service-icon" data-feather="wifi"></i>
             </div>
-            <h5 class="mt-2 text-center dark-text">Invite</h5>
-          </a>
-        </div>
-
-        <div class="col-3">
-          <a href="service.html">
-            <div class="service-box">
-              <i class="service-icon" data-feather="monitor"></i>
-            </div>
-            <h5 class="mt-2 text-center dark-text">Active members</h5>
+            <h5 class="mt-2 text-center dark-text">Request Join</h5>
           </a>
         </div>
         <div class="col-3">
-          <a href="service.html">
+          <a href="withdraw.php">
             <div class="service-box">
               <i class="service-icon" data-feather="bar-chart-2"></i>
             </div>
@@ -736,164 +757,96 @@ if (isset($_SERVER['HTTP_' . $customHeaderName])) {
           </a>
         </div>
         <div class="col-3">
-          <a href="service.html">
+          <a href="settings.php">
             <div class="service-box">
-              <i class="service-icon" data-feather="tablet"></i>
+              <i class="service-icon" data-feather="bar-chart-2"></i>
             </div>
-            <h5 class="mt-2 text-center dark-text">Mobile</h5>
-          </a>
-        </div>
-        <div class="col-3">
-          <a href="service.html">
-            <div class="service-box">
-              <i class="service-icon" data-feather="plus-square"></i>
-            </div>
-            <h5 class="mt-2 text-center dark-text">Medical</h5>
-          </a>
-        </div>
-        <div class="col-3">
-          <a href="service.html">
-            <div class="service-box">
-              <i class="service-icon" data-feather="more-horizontal"></i>
-            </div>
-            <h5 class="mt-2 text-center dark-text">Other</h5>
+            <h5 class="mt-2 text-center dark-text">Settings</h5>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- quick send section starts -->
+
+  <!-- Buy & Sell history section starts -->
   <section>
     <div class="custom-container">
       <div class="title">
-        <h2>Quick send to</h2>
-        <a href="scan-pay.html">See all</a>
-      </div>
-    </div>
-    <div class="quick-send">
-      <div class="profile">
-        <a href="person-transaction.html">
-          <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" />
-          <h5>Johnny</h5>
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- quick send section end -->
-
-
-
-
-  <!-- Transaction section starts -->
-  <section>
-    <div class="custom-container">
-      <div class="title">
-        <h2>Transaction</h2>
-        <a href="transaction-history.html">See all</a>
+        <h2>Transaction History</h2>
       </div>
 
-      <div class="row gy-3">
-        <div class="col-12">
-          <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
-              <div class="transaction-image">
-                <img class="img-fluid transaction-icon" src="assets/images/svg/1.svg" alt="p1" />
-              </div>
-              <div class="transaction-details">
-                <div class="transaction-name">
-                  <h5>Amazon prime</h5>
-                  <h3 class="error-color">$199.<span>99</span></h3>
+      <?php
+require 'config/dbcon.php';
+
+$customHeaderName = 'UID';
+
+// Check if the custom header is set in the request
+if (isset($_SERVER['HTTP_' . $customHeaderName])) {
+    // Retrieve the value of the custom header
+    $userId = $_SERVER['HTTP_' . $customHeaderName];
+
+    // Sanitize the user ID to prevent SQL injection
+    $userId = $conn->real_escape_string($userId);
+
+    // Query to retrieve agencyid from agency table based on owner_uid
+    $agencyIdQuery = "SELECT id FROM agency WHERE owner_uid = '$userId'";
+    $agencyIdResult = $conn->query($agencyIdQuery);
+
+    // Check if the query was successful
+    if ($agencyIdResult && $agencyIdResult->num_rows > 0) {
+        // Fetch the agencyid
+        $agencyRow = $agencyIdResult->fetch_assoc();
+        $agencyId = $agencyRow['id'];
+
+        // Query to retrieve user data based on user ID and agencyid
+        $sql = "SELECT * FROM withdraw_request_agency WHERE uid = '$userId' AND agencyid = '$agencyId' ORDER BY submission_time DESC LIMIT 10";
+
+        // Execute the query
+        $result = $conn->query($sql);
+
+        // Check if the query was successful
+        if ($result && $result->num_rows > 0) {
+            // Use user data as needed
+            while ($row = $result->fetch_assoc()) {
+                // Display the invoice based on retrieved user data
+                ?>
+                <div class="transaction-box">
+                    <a href="" class="d-flex gap-3">
+                        <div class="transaction-image color3">
+                            <img class="img-fluid icon" src="trans.png" alt="litecoin" />
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-name">
+                                <h5>#INV-<?php echo $row['id']; ?> (<?php echo $row['status']; ?>)</h5>
+                                <h3 class="success-color"><?php echo $row['dollarsamount']; ?>$</h3>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h5 class="light-text"><?php echo $row['submission_time']; ?></h5>
+                                <h5 class="text-warning"><?php echo $row['amount']; ?> Golds<span class="light-text"></span></h5>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="d-flex justify-content-between">
-                  <h5 class="light-text">Subscription</h5>
-                  <h5 class="light-text">8:45 am</h5>
-                </div>
-              </div>
-            </a>
-          </div>
+                <?php
+            }
+        } else {
+            echo "No invoices found for this agency.";
+        }
+
+        // Close the database connection
+        $conn->close();
+    } else {
+        echo "No agency found for this user.";
+    }
+} else {
+    echo "Custom header '$customHeaderName' not found in the request.";
+}
+?>
         </div>
-        <div class="col-12">
-          <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
-              <div class="transaction-image">
-                <img class="img-fluid transaction-icon" src="assets/images/svg/2.svg" alt="p2" />
-              </div>
-              <div class="transaction-details">
-                <div class="transaction-name">
-                  <h5>Apple store</h5>
-                  <h3 class="success-color">$60.<span>30</span></h3>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <h5 class="light-text">Installment</h5>
-                  <h5 class="light-text">9:00 pm</h5>
-                </div>
-              </div>
-            </a>
-          </div>
         </div>
-        <div class="col-12">
-          <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
-              <div class="transaction-image">
-                <img class="img-fluid transaction-icon" src="assets/images/svg/3.svg" alt="p3" />
-              </div>
-              <div class="transaction-details">
-                <div class="transaction-name">
-                  <h5>Grocery shop</h5>
-                  <h3 class="error-color">$55.<span>20</span></h3>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <h5 class="light-text">Purchase</h5>
-                  <h5 class="light-text">20 May</h5>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
-              <div class="transaction-image">
-                <img class="img-fluid transaction-icon" src="assets/images/svg/4.svg" alt="p4" />
-              </div>
-              <div class="transaction-details">
-                <div class="transaction-name">
-                  <h5>Sanpchat sub</h5>
-                  <h3 class="success-color">$18.<span>10</span></h3>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <h5 class="light-text">Bill pay</h5>
-                  <h5 class="light-text">19 May</h5>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="transaction-box">
-            <a href="transaction-history.html" class="d-flex gap-3">
-              <div class="transaction-image">
-                <img class="img-fluid transaction-icon" src="assets/images/svg/5.svg" alt="p5" />
-              </div>
-              <div class="transaction-details">
-                <div class="transaction-name">
-                  <h5>Spotify music</h5>
-                  <h3 class="success-color">$20.<span>50</span></h3>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <h5 class="light-text">Transfer</h5>
-                  <h5 class="light-text">18 May</h5>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
   <!-- Transaction section end -->
-
 
 
 

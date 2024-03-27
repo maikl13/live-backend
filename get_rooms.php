@@ -21,32 +21,34 @@ switch ($type){
    
         $selectChat="
         SELECT
-            me.`following` as following,
-            `rooms`.`id`,
-            `rooms`.`image`,
-            `rooms`.`title`, 
-            `rooms`.`description`,
-            `hashtags`.`id` as hashtag_id,
-            `hashtags`.`title` as hashtag_title,
-            `countries`.`id` as country_id,
-            `countries`.`name` as country_name,
-            `countries`.`flag` as country_flag,
-            `rooms`.`country`,
-            COUNT(members.`id`) AS members_count
+        me.`following` as following,
+        `rooms`.`id`,
+        `rooms`.`image`,
+        `rooms`.`title`, 
+        `rooms`.`description`,
+        `hashtags`.`id` as hashtag_id,
+        `hashtags`.`title` as hashtag_title,
+        `countries`.`id` as country_id,
+        `countries`.`name` as country_name,
+        `countries`.`flag` as country_flag,
+        `rooms`.`country`,
+        COUNT(members.`id`) AS members_count
+    FROM `rooms`
+    LEFT OUTER JOIN `user_rooms` me ON me.`room_id` = `rooms`.`id` AND me.`user_uid` = '$user_uid' AND me.`following` = 1
+    LEFT OUTER JOIN `user_rooms` members ON members.`room_id` = `rooms`.`id` AND members.is_online = 1
+    INNER JOIN `countries` ON `countries`.`id` = `rooms`.`country`
+    INNER JOIN `hashtags` ON `hashtags`.`id` = `rooms`.`hashtag`
+    WHERE `rooms`.`id` NOT IN (
+        SELECT
+            `rooms`.`id`
         FROM `rooms`
-        LEFT OUTER JOIN `user_rooms` me ON me.`room_id` = `rooms`.`id` AND me.`user_uid` = '$user_uid' AND me.`following` = 1
-        LEFT OUTER JOIN `user_rooms` members ON members.`room_id` = `rooms`.`id` AND members.is_online = 1
-        INNER JOIN `countries` ON `countries`.`id` = `rooms`.`country`
-        INNER JOIN `hashtags` ON `hashtags`.`id` = `rooms`.`hashtag`
-        WHERE `rooms`.`id` NOT IN (
-            SELECT
-                `rooms`.`id`
-            FROM `rooms`
-            INNER JOIN counter ON counter.previous_winner = rooms.creator_uid
-            INNER JOIN room_occupier_on_enter ON room_occupier_on_enter.room_id = rooms.id
-            GROUP BY `rooms`.`id`
-        )
+
+        INNER JOIN
+(SELECT * FROM counter WHERE counter.ended=1 ORDER BY started_at DESC LIMIT 3) AS counter ON counter.winner = rooms.creator_uid
+        INNER JOIN room_occupier_on_enter ON room_occupier_on_enter.room_id = rooms.id
         GROUP BY `rooms`.`id`
+    )
+    GROUP BY `rooms`.`id`
         $paginationCode
          ";
         // echo $selectChat;
@@ -58,24 +60,36 @@ switch ($type){
     break;
         case "PINNED":
           $selectCode  ="
-            SELECT
-            me.`following` as following,
-            `rooms`.`id`,
-            `rooms`.`image`,
-            `rooms`.`title`, 
-            `rooms`.`description`,
-            `hashtags`.`id` as hashtag_id, `hashtags`.`title` as hashtag_title,
-            `countries`.`id` as country_id, `countries`.`name` as country_name, `countries`.`flag` as country_flag,
-            `rooms`.`country`,
-            COUNT( members.`id`) AS members_count
-            FROM `rooms`
-            LEFT OUTER JOIN `user_rooms` me ON me.`room_id`=`rooms`.`id` AND me.`user_uid`='$user_uid' AND me.`following`=1
-            LEFT OUTER JOIN `user_rooms` members ON members.`room_id`=`rooms`.`id` AND members.is_online=1
-            INNER JOIN `countries` ON `countries`.`id` = `rooms`.`country`
-            INNER JOIN `hashtags` ON `hashtags`.`id` = `rooms`.`hashtag`
-            INNER JOIN counter ON counter.previous_winner=rooms.creator_uid
-            INNER JOIN room_occupier_on_enter ON room_occupier_on_enter.room_id=rooms.id
-            GROUP BY `rooms`.`id`
+          SELECT
+    me.`following` as following,
+    `rooms`.`id`,
+    `rooms`.`image`,
+    `rooms`.`title`, 
+    `rooms`.`description`,
+    `hashtags`.`id` as hashtag_id,
+    `hashtags`.`title` as hashtag_title,
+    `countries`.`id` as country_id,
+    `countries`.`name` as country_name,
+    `countries`.`flag` as country_flag,
+    `rooms`.`country`,
+    COUNT(members.`id`) AS members_count
+FROM
+    `rooms`
+LEFT OUTER JOIN
+    `user_rooms` me ON me.`room_id` = `rooms`.`id` AND me.`user_uid`='$user_uid' AND me.`following`=1
+LEFT OUTER JOIN
+    `user_rooms` members ON members.`room_id` = `rooms`.`id` AND members.is_online=1
+INNER JOIN
+    `countries` ON `countries`.`id` = `rooms`.`country`
+INNER JOIN
+    `hashtags` ON `hashtags`.`id` = `rooms`.`hashtag`
+INNER JOIN
+    (SELECT * FROM counter WHERE counter.ended=1 ORDER BY started_at DESC LIMIT 3) AS counter ON counter.winner = rooms.creator_uid
+INNER JOIN
+    room_occupier_on_enter ON room_occupier_on_enter.room_id = rooms.id
+GROUP BY
+    `rooms`.`id`;
+
              ";
        //   echo $selectCode;
     $neededRooms = readRowFromSql($selectCode, false);

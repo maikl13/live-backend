@@ -3,7 +3,6 @@ session_start();
 include('includes/header.php');
 include('config/dbcon.php');
 
-$uid = $_SESSION['uid']; // قم بتغيير هذا بالطريقة التي تحمل بها معرف المستخدم
 
 ?>
 
@@ -34,45 +33,95 @@ $uid = $_SESSION['uid']; // قم بتغيير هذا بالطريقة التي �
 
 
     <div class="page-content-wrapper py-3"> 
-      <!-- Add New Contact -->
-      <div class="container">
+    <div class="container">
         <div class="card mb-2">
-          <div class="card-body p-2">
-            <div class="chat-search-box">
-                <div class="input-group"><span class="input-group-text"><i class="bi bi-search"></i></span>
-                  <input type="search" id="search" autocomplete="off" placeholder="Search ID Agency Here ..." class="form-control float-right">
+            <div class="card-body p-2">
+                <!-- Search Box -->
+                <div class="chat-search-box">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="search" id="search" autocomplete="off" placeholder="Search ID Agency Here ..." class="form-control float-right">
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
 
-        <h5>HERE TEXT</h5>
+
 
         <!-- Element Heading -->
-        <div id="search-results" class="element-heading">
+        
+        <div class="element-heading">
+        <h6 class="ps-1">Agency List</h6>
+        </div>
+        <!-- Chat User List -->
+        <ul class="ps-0 chat-user-list" id="agency-list">
+        <?php
+
+$sql = "SELECT * FROM agency";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // إذا كانت هناك بيانات متاحة، ابدأ عرضها
+    while($row = $result->fetch_assoc()) {
+        // استخراج بيانات الوكالة وعرضها داخل العنصر
+        echo '<li class="p-3 chat-unread"><a class="d-flex" href="agency_details.php?id=' . $row['id'] . '">';
+        echo '<div class="chat-user-thumbnail me-3 shadow"><img class="img-circle" src="../images/' . $row['image'] . '" alt=""><span class="active-status"></span></div>';
+        echo '<div class="chat-user-info">';
+        echo '<h6 class="text-truncate mb-0">' . $row["name"] . '</h6>';
+        echo '<p class="text-truncate mb-0"><img class="img-circle" src="../images/' . $row['flag'] . '" width="28" height="28" alt=""></p>';
+        echo '<div class="last-chat"></div>';
+        echo '</div></a>';
+        // زر الانضمام
+        echo '<div><button class="btn btn-primary" type="submit">View</button></div>';
+        echo '</li>';
+    }
+} else {
+    echo "0 نتائج";
+}
+
+$conn->close();
+?>
+
+          <!-- Single Chat User -->
+          <li class="p-3 chat-unread"><a class="d-flex" href="#">
+                </div>
+              </div></a>
+          </li>
         </ul>
       </div>
     </div>
 
 
-
     <script>
 document.getElementById('search').addEventListener('input', function() {
-    var searchTerm = this.value;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'livesearch2.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById('search-results').innerHTML = xhr.responseText;
-        }
-    };
-    
-    xhr.send('searchTerm=' + searchTerm);
+    var searchQuery = this.value.trim();
+    if (searchQuery.length > 0) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'livedatasearch.php?q=' + encodeURIComponent(searchQuery), true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Clear previous search results
+                    document.getElementById('agency-list').innerHTML = '';
+                    // Insert search results into the agency list
+                    document.getElementById('agency-list').insertAdjacentHTML('beforeend', xhr.responseText);
+                } else {
+                    console.error('Request failed: ' + xhr.status);
+                }
+            }
+        };
+        xhr.send();
+    } else {
+        // Clear search results if the search query is empty
+        document.getElementById('agency-list').innerHTML = '';
+    }
 });
 </script>
+
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 

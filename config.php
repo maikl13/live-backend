@@ -23,6 +23,18 @@ $utf8_enable = "SET character_set_results = 'utf8mb4', character_set_client = 'u
 $mysqli->query($utf8_enable);
 
 ///// helper function //////
+function beginTransaction() {
+   
+    global $mysqli; // Assuming $mysqli is your MySQLi connection object
+    $mysqli->autocommit(false); // Disable autocommit to start a transaction
+}
+function commitTransaction() {
+    global $mysqli; // Assuming $mysqli is your MySQLi object
+
+    if ($mysqli) {
+        $mysqli->commit();
+    }
+}
 function readRowFromSql($code, $one = true)
 {
     global $mysqli;

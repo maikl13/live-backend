@@ -18,6 +18,37 @@ if($user_earnings){
 }
 */
 
+//Create Agency
+
+$user_create_agency = readRowFromSql("SELECT `users`.`agency_id` FROM `users` WHERE `users`.`uid` = '$user'", true)['agency_id'];
+
+if ($user_create_agency === NULL) {    
+    // تحقق مما إذا كان المستخدم غير موجود في جدول الوكالات بحقل owner_uid
+    $agency_check = readRowFromSql("SELECT `owner_uid` FROM `agency` WHERE `owner_uid` = '$user'", true)['owner_uid'];
+    
+    if ($agency_check === NULL) {
+        $botton['title_arabic'] = 'إنشاء وكالة';
+        $botton['title_english'] = 'Create Agency';
+        $botton['botton_icon'] = 'insurance.png';
+        $botton['link_to_open_on_click'] = 'https://all-go.net/LiveFlutter/create_agency/index.php';
+        $list[] = $botton;
+    }
+}
+
+
+//JOIN Agency
+$user_not_agency = readRowFromSql("SELECT `users`.`agency_id` FROM `users` WHERE `users`.`uid` = '$user'", true)['agency_id'];
+
+if ($user_not_agency === NULL) {    
+     $botton['title_arabic'] = 'انضم الى وكالة';
+     $botton['title_english'] = 'Join Agency';
+     $botton['botton_icon'] = 'insurance.png';
+     $botton['link_to_open_on_click'] = 'https://all-go.net/LiveFlutter/agency/index.php';
+     $list[] = $botton;
+}
+
+
+//View my agency
 $user_in_agency= readRowFromSql("SELECT `users`.`agency_id`  FROM `users` WHERE `users`.`uid` = '$user'", true)['agency_id'];
  
 if($user_in_agency!=NULL){    
@@ -27,6 +58,9 @@ if($user_in_agency!=NULL){
      $botton['link_to_open_on_click']='https://all-go.net/LiveFlutter/agency/index.php';
      $list[]=$botton;
 }
+
+
+//My Earnings
 
 $user_earnings= readRowFromSql("SELECT `users`.`agency_id`  FROM `users` WHERE `users`.`uid` = '$user'", true)['agency_id'];
  

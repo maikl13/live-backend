@@ -8,8 +8,8 @@ $admin_team_number = $_GET['admin_team_number'];
 $admin_uid = $_GET['admin_uid']; 
 $period_in_min = $_GET['period_in_min']; 
 $battle = InsertAndGetId("INSERT INTO `pk_battles` 
-(`id`, `room`, `initiated_at`, `started_at`, `ended_at`, `ended_by_admin`, `period_in_min`, `winner_team`, `remaining_seconds`, `admin_team_number`) VALUES 
-(NULL, '$room', CURRENT_TIMESTAMP, NULL, NULL, '0', '$period_in_min', NULL, '0', $admin_team_number);");
+(`id`, `room`, `initiated_at`, `started_at`, `ended_at`, `ended_by_admin`, `period_in_min`, `winner_team`, `admin_team_number`) VALUES 
+(NULL, '$room', CURRENT_TIMESTAMP, NULL, NULL, '0', '$period_in_min', NULL,  $admin_team_number);");
 
  
  

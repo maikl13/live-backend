@@ -416,6 +416,20 @@
                   <p>Agency List</p>
                 </a>
             </ul>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="create_agency_request.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agency Open Request</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="agency-hosts-reports.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agency Reports</p>
+                </a>
+            </ul>
             <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-crown nav-icon"></i>
@@ -500,19 +514,46 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agent-coins.php" class="nav-link">
+                <a href="withdraw-agency-allrequest.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Agent List</p>
+                  <p>All Request</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="hats-history.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Hats History</p>
-                  </a>
-            </li>
             </ul>
-            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-agency-completed.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Completed</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-agency-pending.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pending</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-agency-processing.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Processing</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-agency-failed.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Failed</p>
+                </a>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="withdraw-agency-logs.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Withdraw Agency Logs</p>
+                </a>
+            </ul>
             <li class="nav-header">Accessories Users & Rooms</li>
             <li class="nav-item">
             <a href="#" class="nav-link">
@@ -664,7 +705,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="feadback.php" class="nav-link">
+                <a href="feedback.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Feedback</p>
                 </a>
@@ -680,15 +721,15 @@
             <a href="#" class="nav-link">
               <i class="fa-solid fa-bug-slash nav-icon"></i>
               <p>
-                Reports Users
+                Reports Manage
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="reports.php" class="nav-link">
+                <a href="reports-users.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reports</p>
+                  <p>Reports Users</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -704,7 +745,90 @@
                   </a>
             </li>
             </ul>
+            <li class="nav-header">Levels & Tasks Management</li>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-bug nav-icon"></i>
+              <p>
+                Levels Manage
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="account-level.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Accounts Levels</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="room-level.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Rooms Levels</p>
+                  </a>
+            </li>
+            </ul>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-bug-slash nav-icon"></i>
+              <p>
+                Tasks Manage
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="level-task.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Level Task</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="daily-task.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daily Task</p>
+                  </a>
+            </li>
+              <li class="nav-item">
+                <a href="room-level-task.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Room Level Task</p>
+                  </a>
+            </li>
+            </ul>
             <li class="nav-header">System Settings</li>
+          <li class="nav-item">
+            <a href="package-price.php" class="nav-link">
+              <i class="fa-solid fa-user-tie nav-icon"></i>
+              <p>
+              Packages Price
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="system-commission.php" class="nav-link">
+              <i class="fa-solid fa-user-tie nav-icon"></i>
+              <p>
+              System Commission
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="agency-commission.php" class="nav-link">
+              <i class="fa-solid fa-user-tie nav-icon"></i>
+              <p>
+              Agency Commission
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="notifications.php" class="nav-link">
+              <i class="fa-solid fa-user-tie nav-icon"></i>
+              <p>
+              Send Notification
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="countries.php" class="nav-link">
               <i class="fa-solid fa-user-tie nav-icon"></i>

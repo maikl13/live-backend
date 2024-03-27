@@ -5,7 +5,7 @@ include "config.php";
 
 $battle = $_GET['battle']; 
  
- 
+ //useless
 $datetime = new DateTime( "now", new DateTimeZone( "Africa/Cairo" ) );
 $now= $datetime->format( 'Y-m-d H:i:s' );
  
@@ -26,8 +26,7 @@ WHERE `place_index`='$curr_place_index' AND `battle`='$battle'");
  
  $result=updateSql(" UPDATE `pk_battles`
  SET 
-   `started_at` = '$now',
-   `remaining_seconds` = `pk_battles`.`period_in_min` * 60
+   `started_at` = NOW()
  WHERE `pk_battles`.`id` = '$battle';");  
  echo json_encode($now, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
  

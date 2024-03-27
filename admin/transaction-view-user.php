@@ -228,7 +228,7 @@ include('config/dbcon.php');
                 if(isset($_GET['transaction_id']))
                 {
                   $transaction_id = $_GET['transaction_id'];
-                  $query = "SELECT a.id as idrequest, b.id, a.uid, a.firstname,  b.profile_pic, b.level, a.lastname, b.full_name, b.short_digital_id, b.bio, b.uid, a.payment_method, a.bank_address, a.iban, a.swiftcode, a.western_union_details, a.country, a.phone, a.amount, a.dollarsamount, a.status, a.submission_time FROM withdraw_request AS a INNER JOIN users AS b ON a.uid = b.uid WHERE a.id='$transaction_id' LIMIT 1 ";   
+                  $query = "SELECT a.id as idrequest, b.id, a.uid, a.firstname,  b.profile_pic, b.level, a.paypal_email, a.lastname, b.full_name, b.short_digital_id, b.bio, b.uid, a.payment_method, a.bank_address, a.iban, a.swiftcode, a.western_union_details, a.country, a.phone, a.amount, a.dollarsamount, a.status, a.submission_time FROM withdraw_request AS a INNER JOIN users AS b ON a.uid = b.uid WHERE a.id='$transaction_id' LIMIT 1 ";   
                     $query_run = mysqli_query($con, $query);
 
                     if(mysqli_num_rows($query_run) > 0)

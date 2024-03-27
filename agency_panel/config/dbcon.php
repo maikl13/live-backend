@@ -20,4 +20,8 @@ if(!$conn)
 //else{
   //  echo "Database Connected / Welcome Eslam";
 //}
+
+// Set charset
+$conn->set_charset('utf8mb4');
+
 ?>

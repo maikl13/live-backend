@@ -1,21 +1,9 @@
 <?php
-include('config/script.php');
+        include 'config/dbcon.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database configuration
-    $servername = "92.205.144.215";
-    $username = "yalla_chat";
-    $password = "NUeSyRHLj?dD";
-    $dbname = "yalla_chat";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Prepare and bind the SQL statement for inserting payment details
     $stmt_payment_details = $conn->prepare("INSERT INTO withdraw_request (payment_method, bank_address, paypal_email, western_union_details, uid, amount, dollarsamount, phone, country, iban, swiftcode, firstname, lastname) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

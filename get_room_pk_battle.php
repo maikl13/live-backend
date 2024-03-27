@@ -9,8 +9,7 @@ $battleData= readRowFromSql("SELECT
 `pk_battles`.`started_at`,
 `pk_battles`.`period_in_min`,
 `pk_battles`.`admin_team_number`,
-`pk_battles`.`remaining_seconds`,
-
+ 
 
 
 pk_battle_teams1.total_gold AS team1balance,

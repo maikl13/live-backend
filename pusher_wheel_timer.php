@@ -1,48 +1,45 @@
 <?php
-include "config.php";
-require __DIR__ . '/vendor/autoload.php';
-$app_id = '1768878';
-$app_key = '2c6f687f7d54a2e4b6fa';
-$app_secret = '2c858a4b20f1c8586f53';
-$app_cluster = 'eu';
-
-$pusher = new Pusher\Pusher($app_key, $app_secret, $app_id, 
-['cluster' => $app_cluster]);
+//include "config.php";
+//include "pusher_config.php";
 //checkWheelTimer();
-function checkWheelTimer(){    
-    global $pusher;
-
-     $game_remaining_sec=getTimer(); 
- //update game remaining_sec timer
-    $pusher->trigger('wheel', 'update_timer',  $game_remaining_sec);
+ 
+function checkWheelTimer() {
  
 
-if($game_remaining_sec==0){
-        //set done
-        $result = updateSql("UPDATE `wheel_rounds` SET `done` = '1'");   
-        //start new round
-        $result = updateSql("INSERT INTO `wheel_rounds` 
-        (`id`, `winner_item`, 
-        `starts_at`,  `done`)
-         VALUES (NULL, NULL, NOW(), 0);");   
-     $round=getRoundData(); 
-     $pusher->trigger('wheel', 'game_started', $round);
-    
-    }
-  if($game_remaining_sec<12&&$game_remaining_sec>5){
-    //get winner
-    $round=getRoundData(); 
-    $winner_item_this_round=readRowFromSql("SELECT  `wheel_rounds`.`winner_item`   FROM `wheel_rounds`    
-    WHERE `wheel_rounds`.`id`='$round';",true)['winner_item'];
-    if($winner_item_this_round!=null){
-      $winnerItemId=getWinner($round);
-      $insert_winner = updateSql("UPDATE `wheel_rounds` SET `winner_item` = '$winnerItemId'
-      WHERE `wheel_rounds`.`id` = $round;");
-      getGameResult($round,$winnerItemId);
-    }
-  
- } 
+  global $pusher;
+  $game_remaining_sec = getTimer();
 
+ 
+$secoundly_trigger['update_timer']=$game_remaining_sec;
+  if ($game_remaining_sec == 0) {
+      // Set done
+      $result = updateSql("UPDATE `wheel_rounds` SET `done` = '1'");   
+      // Start new round
+    //  $result = updateSql(" INSERT INTO `log`    (`id`, `text`, `created_at`) VALUES (NULL, 'Start new round $remaining_seconds',NOW());"); 
+      $result = updateSql("INSERT INTO `wheel_rounds` (`id`, `winner_item`, `starts_at`, `done`)
+                           VALUES (NULL, NULL, NOW(), 0)");
+          $round = getRoundData(); 
+          $secoundly_trigger['game_started']=$round;
+        
+    
+  }
+
+  if ($game_remaining_sec < 12 && $game_remaining_sec > 5) {
+      // Get winner
+      $round = getRoundData(); 
+      $winner_item_this_round = readRowFromSql("SELECT `wheel_rounds`.`winner_item`
+                                                FROM `wheel_rounds`
+                                                WHERE `wheel_rounds`.`id`='$round'", true)['winner_item'];
+      if ($winner_item_this_round == null) {
+          $winnerItemId = getWinner($round);
+          $insert_winner = updateSql("UPDATE `wheel_rounds` SET `winner_item` = '$winnerItemId'
+                                      WHERE `wheel_rounds`.`id` = $round");
+      $gameResult=    getGameResult($round, $winnerItemId);
+      $secoundly_trigger['game_ended']=$gameResult;
+      }
+  }
+ 
+  $pusher->trigger('wheel', 'data', $secoundly_trigger);
  
 }
  
@@ -54,25 +51,35 @@ function getRoundData(){
  $current_round=readRowFromSql("SELECT  `wheel_rounds`.`id`   FROM `wheel_rounds`    
  WHERE ADDTIME(`wheel_rounds`.`starts_at`, '00:00:42') > NOW() ORDER BY id DESC LIMIT 1",true);
  return $current_round['id'];
-//return $round;
 }
 function getWinner($round){
     echo 'get Winner called';
-  $winnerSELECT = readRowFromSql("SELECT `wheel_game_items`.`id`
-  FROM `wheel_game_items`
-
-  LEFT OUTER JOIN `wheel_rounds_bidders` ON
-   `wheel_game_items`.`id`=`wheel_rounds_bidders`.`item` AND
-`wheel_rounds_bidders`.`round` = '$round'
-  WHERE  `wheel_game_items`.`id`<9
-  GROUP BY `wheel_game_items`.`id`
-  ORDER BY (`multiplier` * COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0)) 
-  LIMIT 1;");   
-  if($winnerSELECT==null){
-    $winner=1;
-  }else{
-    $winner=$winnerSELECT['id'];
+  $arr = readRowFromSql("SELECT `wheel_game_items`.`id`,
+  COALESCE((`multiplier` *SUM(`wheel_rounds_bidders`.`value`)), 0)  as loss
+   FROM `wheel_game_items`
+ 
+   LEFT OUTER JOIN `wheel_rounds_bidders` ON
+    `wheel_game_items`.`id`=`wheel_rounds_bidders`.`item` AND
+ `wheel_rounds_bidders`.`round` = '$round'
+   WHERE  `wheel_game_items`.`id`<9
+   GROUP BY `wheel_game_items`.`id`
+   ORDER BY (`multiplier` * COALESCE(SUM(`wheel_rounds_bidders`.`value`), 0)) 
+  ",false);
+  $last_loss=$arr[0]['loss'];
+  $smallest=[];
+  foreach($arr as $item){
+    if($item['loss']==$last_loss){
+      $smallest[]=$item['id'];
+      $last_loss=$item['loss'];
+    }else{
+      break;
+    }
   }
+  $winner=  $smallest[array_rand($smallest)];   
+  $s= json_encode($smallest, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);;
+  updateSql(" INSERT INTO `log`  (`id`, `text`, `created_at`)
+   VALUES (NULL,   'smallest ${s}, winner:  $winner',NOW());");   
+     
    return $winner;
    }
  function getGameResult($round,$winnerItemId){
@@ -108,37 +115,45 @@ echo json_encode($topThree, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         $bidderPusherId=$bidder['last_wheel_pusher_id'];
 
         $potValue = readRowFromSql("SELECT 
-        SUM(`wheel_rounds_bidders`.`value`) AS potValue
+        SUM(`wheel_rounds_bidders`.`value`) AS potValue,
+        wheel_rounds_bidders.is_gold as potWithGolds
            FROM 
            `wheel_rounds_bidders` 
            WHERE 
              `wheel_rounds_bidders`.`round` = '$round' AND 
-              `wheel_rounds_bidders`.`bidder`='$bidderUID'   
-        ",true)['potValue'];    
-          $wonValue = readRowFromSql("SELECT
-           SUM(`wheel_rounds_bidders`.`value`*`wheel_rounds_bidders`.`multiplier`)
-            AS wonValue FROM `wheel_rounds_bidders`
-             WHERE `wheel_rounds_bidders`.`round` = '$round' 
-             AND `wheel_rounds_bidders`.`bidder`='$bidderUID'
-          AND `wheel_rounds_bidders`.`item`='1'
+              `wheel_rounds_bidders`.`bidder`='$bidderUID' AND
+              `wheel_rounds_bidders`.`by_father_type`='0'  
+       
+        ",true) ;    
+          $wonValue = readRowFromSql("SELECT IFNULL(SUM(`wheel_rounds_bidders`.`value` * `wheel_rounds_bidders`.`multiplier`), 0) AS wonValue 
+          FROM `wheel_rounds_bidders` 
+          WHERE `wheel_rounds_bidders`.`round` = '$round' 
+          AND `wheel_rounds_bidders`.`bidder` = '$bidderUID' 
+          AND `wheel_rounds_bidders`.`item` = '$winnerItemId';
           ;",true)['wonValue'];     
-          $thisBidder['potValue']=$potValue;
+          $thisBidder['potValue']=$potValue['potValue'];
+          $potWithGolds=$potValue['potWithGolds'];
+          $thisBidder['potWithGolds']= $potWithGolds;
           $thisBidder['wonValue']=$wonValue;
           $thisBidder['uid']=$bidderUID;
  $allBiddersPotAndWonValue[]=$thisBidder;
+
+ if($wonValue!=0){
+  $cur_type=$potWithGolds?'g': 'c';
+  addToWallet($bidderUID, $wonValue, $cur_type);
+}
     }
-   // $result['potValue']=$potValue;
-   // $result['wonValue']=$wonValue;
+
    $result['allBiddersPotAndWonValue']=$allBiddersPotAndWonValue;
     $result['winnerItem']=$winnerItemId;
     $result['biggest_winner_this_round']=$topThree ;
-  //todo  pusher.sendToUser("$bidderPusherId", "game_ended",$result);
-  $pusher->trigger('wheel', 'game_ended', $result);
+return $result;
+ 
  
 }
 
 function getTimer(){
-    //rest or game
+
     $remaining_seconds=readRowFromSql("SELECT 
     CASE
         WHEN COUNT(*) = 0 THEN 0  -- No active rounds
@@ -150,8 +165,10 @@ FROM
     WHERE `done` =0
     ORDER BY `starts_at` LIMIT 1
     ;",true);
+    $dd=$remaining_seconds['remaining_seconds'];
+   //  $result = updateSql(" INSERT INTO `log`  (`id`, `text`, `created_at`) VALUES (NULL,    $dd,NOW());");   
      
-    // return 12;
+    
    return $remaining_seconds['remaining_seconds'];
    }
 ?>

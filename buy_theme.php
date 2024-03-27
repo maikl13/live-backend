@@ -6,7 +6,17 @@ $uid =$_GET['uid'];
 $theme =$_GET['theme'];
 $store =$_GET['store'];
 
-$currency_type="";
+$my_room_level_selecet=readRowFromSql("SELECT `rooms`.`room_level` FROM `rooms`
+WHERE `rooms`.`creator_uid` ='$uid'", true); 
+ $my_room_level=0;
+ if($my_room_level_selecet!=null){
+  $my_room_level= $my_room_level_selecet['room_level'];
+ }
+
+$required_room_level=readRowFromSql("SELECT `themes`.`required_room_level` FROM `themes`
+WHERE `themes`.`id`=$theme", true)['required_room_level']; 
+if($required_room_level<=$my_room_level){
+   $currency_type="";
 $price;
 if($store=='g'){
    $theme_price=readRowFromSql("SELECT `themes`.`golds` FROM `themes` WHERE `themes`.`id`=$theme", true); 
@@ -30,5 +40,10 @@ if($store=='c'){
 
            echo "false";
        }
+}else{
+   echo "false";
+}
+
+
 
 ?>

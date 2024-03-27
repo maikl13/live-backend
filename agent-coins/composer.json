@@ -1,0 +1,6 @@
+{
+    "require": {
+        "myfatoorah/library": "^2.2",
+        "myfatoorah/magento2-gateway": "^2.2"
+    }
+}

@@ -23,13 +23,21 @@ if($full_all_data_before_login&&!$user_exist){
  
    $finalResault['open_full_all_data_page']=0;
     if($result==null){
+        if($fullname==null||$fullname=='null'){
+            $fullname='new user';
+        }
      //لو لوجن بس لا لكن بم انه اصلا زرار واحد يبقا ننشءله حساب
   $short_digital_id=getUniqueID();
  
  
-      $sqlINSERT = "INSERT INTO `users` (`id`, `uid`, `short_digital_id`, `full_name`, `profile_pic`, `profile_cover`, `level`,
-       `login_method`, `crystals`, `gold`, `fcm_token`, `selected_theme`, `gender`, `bio`,
-        `date_of_birth`, `country`, `language_code`, `vehicle`, `chat_box`, `used_frame`, 
+      $sqlINSERT = "INSERT INTO `users`
+       (`id`, `uid`, `short_digital_id`, `full_name`, `profile_pic`, `profile_cover`,
+        `level`,
+       `login_method`, `crystals`, `gold`, `fcm_token`,
+        `selected_theme`, `gender`, `bio`,
+
+        `date_of_birth`, `country`, `language_code`, 
+        `vehicle`, `chat_box`, `used_frame`, 
         `current_premium_subscription`
         ,`current_vip_subscription`,`join_date` ,`auto_firend_requists_accept`,`view_my_related_rooms`
         ,`account_status`,`agency_id` ,`agency_join_date`,`phone`
@@ -37,9 +45,15 @@ if($full_all_data_before_login&&!$user_exist){
         ) 
         
         
-        VALUES (NULL, '$uid', '$short_digital_id', '$fullname', 
-        'default_profile.jpg', 'default_cover.jpg', '0', '$login_method', '0', '0', '$fcm_token',
-         '0', 'NOTSPECIFIED', 'Bio is left empty', CURRENT_TIMESTAMP, '1', 'EN', NULL, '0', '1',
+        VALUES 
+        (NULL, '$uid', '$short_digital_id', '$fullname', 
+        'default_profile.jpg', 'default_cover.jpg',
+         '0', '$login_method', '0', '0', '$fcm_token',
+
+
+         '0', 'NOTSPECIFIED', 'Bio is left empty',
+          CURRENT_TIMESTAMP, '1', 'EN', 
+          NULL, NULL, '1',
           NULL
           ,NULL,CURDATE() ,0,0
         ,NULL,NULL ,NULL,NULL
